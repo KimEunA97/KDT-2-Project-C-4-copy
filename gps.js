@@ -33,20 +33,32 @@ console.dir(root);
 
 console.dir(firstChild.style);
 
-styling(firstChild, "200px", "100px", "1px solid black", "asdsd", "black");
-styling(secondChild, "200px", "100px", "1px solid black", "ㅁㅁㅁㅁ", "black");
-styling(thirdChild, "200px", "100px", "1px solid black", "asdsd", "black");
 
 
 //GPS
 
+let lat, lon;
+
 console.log(navigator.geolocation);
 navigator.geolocation.getCurrentPosition(function (position) {
   console.log(position);
-  let lat = position.coords.latitude;
-  let lon = position.coords.longitude;
+  lat = position.coords.latitude;
+  lon = position.coords.longitude;
   console.log("위도 : " + lat + " 경도 :" + lon);
-  
+
+  com();
+
 })
+
+
+function com() {
+
+  
+styling(firstChild, "200px", "100px", "1px solid black", lat +" "+ lon, "black");
+styling(secondChild, "200px", "100px", "1px solid black", lon, "black");
+styling(thirdChild, "200px", "100px", "1px solid black", "asdsd", "black");
+
+  console.log(lat);
+}
 
 
