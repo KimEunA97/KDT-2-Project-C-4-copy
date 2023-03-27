@@ -2,9 +2,7 @@ import http, { Server } from 'http'
 import url from 'url'
 import path from 'path'
 
-import './module/KEY.js'
 import { KEYobj } from './module/KEY.js';
-
 
 
 http.createServer(function (request, response) {
@@ -22,7 +20,8 @@ http.createServer(function (request, response) {
 
 }).listen(2080);
 
-const _URL = KEYobj.APIreqeustURL + "?" + KEYobj.serviceKEY;
+const _URL = KEYobj.KEY
+console.log(_URL);
 
 function APIload() {
 

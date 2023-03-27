@@ -1,3 +1,4 @@
+import './module/Kmagrid'
 
 
 function eleMaker(ele) {
