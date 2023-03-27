@@ -1,4 +1,5 @@
-import './module/Kmagrid'
+import './module/Kmagrid.js';
+
 
 
 function eleMaker(ele) {
@@ -40,9 +41,7 @@ navigator.geolocation.getCurrentPosition(function (position) {
   lon = position.coords.longitude;
   console.log("위도 : " + lat + " 경도 :" + lon);
 
-  fetch()
-
-  com();
+  console.log((lat, lon));
 
 })
 
