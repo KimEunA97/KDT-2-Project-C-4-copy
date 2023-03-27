@@ -39,6 +39,8 @@ navigator.geolocation.getCurrentPosition(function (position) {
   lon = position.coords.longitude;
   console.log("위도 : " + lat + " 경도 :" + lon);
 
+  fetch()
+
   com();
 
 })
@@ -46,12 +48,12 @@ navigator.geolocation.getCurrentPosition(function (position) {
 
 function com() {
 
-  
-styling(firstChild, "200px", "100px", "1px solid black", lat +" "+ lon, "black");
-styling(secondChild, "200px", "100px", "1px solid black", lon, "black");
-styling(thirdChild, "200px", "100px", "1px solid black", "asdsd", "black");
+  styling(firstChild, "200px", "100px", "1px solid black", lat + " " + lon, "black");
+  styling(secondChild, "200px", "100px", "1px solid black", lon, "black");
+  styling(thirdChild, "200px", "100px", "1px solid black", "asdsd", "black");
 
   console.log(lat);
 }
 
-console.log("asd",firstChild.innerText);
+console.log("asd : \n", firstChild.innerText);
+
