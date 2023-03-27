@@ -1,27 +1,27 @@
 import http, { Server } from 'http'
 import url from 'url'
+import querystring from 'querystring';
 import path from 'path'
 
 import { KEYobj } from './module/KEY.js';
 
 
-http.createServer(function (request, response) {
+let KEYURL = querystring.parse(KEYobj.APIreqeustURL);
+console.log(KEYURL);
 
-  if (request.method === 'GET') {
-    response.writeHead(200, { 'Content-type': 'text/html; charset=utf-8' });
-
-    let page = firstPage(data);
-    response.write(page);
-    response.end;
-
-  }
-
-
-
-}).listen(2080);
-
-const _URL = KEYobj.KEY
+const _URL = KEYobj.serviceURL
 console.log(_URL);
+
+url += "getVilageFcst";
+url += "?ServiceKey=" + KEYobj.serviceKEY;
+url += "&numOfRows=10";
+url += "&pageNo=1";
+url += "&dataType=XML";
+url += "&base_data=" + base_date;
+url += "&base_time" + base_time;
+url += "&nx=" + nx;
+url += "&ny=" + ny;
+
 
 function APIload() {
 
@@ -35,6 +35,19 @@ function APIload() {
 }
 
 APIload();
+
+http.createServer(function (request, response) {
+
+  if (request.method === 'GET') {
+    response.writeHead(200, { 'Content-type': 'text/html; charset=utf-8' });
+
+    let page = firstPage(data);
+    response.write(page);
+    response.end;
+
+  }
+
+}).listen(2080);
 
 function firstPage(data) {
   return `
