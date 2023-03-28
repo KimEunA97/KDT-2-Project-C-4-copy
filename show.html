@@ -14,6 +14,22 @@
     <input type="submit">
   </form>
 
+  <script>
+    //GPS
+
+    let lat, lon;
+
+    navigator.geolocation.getCurrentPosition(function (position) {
+
+      console.log(position);
+      lat = position.coords.latitude;
+      lon = position.coords.longitude;
+      console.log("위도 : " + lat + " 경도 :" + lon);
+
+
+    })
+  </script>
+
 </body>
 
 </html>
