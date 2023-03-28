@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>현재 날씨+3시간 단위 5일+대기오염 API(js에서 제공하는 GPS API사용)</title>
+</head>
+
+<body>
+  <script>
+    navigator.geolocation.getCurrentPosition(function (pos) {
+      console.log(pos);
+      var latitude = pos.coords.latitude;
+      var longitude = pos.coords.longitude;
+      console.log("현재 위치는 : " + latitude + ", " + longitude);
+    });
+    const API_KEY = "0e157a0c039c33991cc4121e2e911000";
+
+    // 현재 API
+    function onGeoOk(position) {
+      const latitude = position.coords.latitude;//위도
+      const longitude = position.coords.longitude;//경도
+      fetch(
+        `https://api.openweathermap.org/data/2.5/weather?lat=${latitude}&lon=${longitude}&lang=kr&appid=${API_KEY}&units=metric`, //한국어를 넣어줌. weather-description: 'overcast clouds'를 '구름 조금'이런식으로 바꿔준다
+      )
+        .then(response => response.json()) //.then promise 수행이될때 실행 되는 것
+        .then(data => console.log(data, `현재 기온 : ${data.main.temp}도, 날씨 : ${data.weather[0].main},바람:${data.wind.speed}`));
+    }
+
+
+    // 위에 API를 합쳐 넣으려고 했으나 콘솔에 하나만 인식이 되어서 함수를 따로 만들었다
+    // 3시간 5일 API
+    function onGeoOkone(position) {
+      const latitude = position.coords.latitude;//위도
+      const longitude = position.coords.longitude;//경도
+
+      // console.log(`You live in ${latitude} and ${longitude}`);
+
+
+      fetch(
+        `https://api.openweathermap.org/data/2.5/forecast?lat=${latitude}&lon=${longitude}&lang=kr&appid=${API_KEY}&units=metric`,//3시간 단위 5일api/&units=metric은 온도(화씨->섭씨)
+
+      )
+        .then(response => response.json()) //.then promise
+        .then(data => console.log(data, `앞으로 3시간 뒤 기온:${data.list[3].main.temp}도, 날씨:${data.list[3].weather[0].main},강수량:${data.list[3].pop}%`));
+    }
+
+    // 현재 대기오염 API
+    function onGeoOktwo(position) {
+      const latitude = position.coords.latitude;//위도
+      const longitude = position.coords.longitude;//경도
+      fetch(
+        `https://api.openweathermap.org/data/2.5/air_pollution?lat=${latitude}&lon=${longitude}&lang=kr&appid=${API_KEY}`,
+      )
+        .then(response => response.json()) //.then promise
+        .then(data => console.log(data, `대기오염(1~5로 5가 나쁨):${data.list[0].main.aqi}`));
+    } //홈페이지에서 보면 main.aqi의 기준에 대해 나와있다
+
+
+
+
+
+    //실행이 거부될때는(에러).catch를 쓰는 것 같은데 여기서는 error 함수를 만들어서 알림이 뜨게 했다
+    function onGeoError() {
+      alert("Can't find you. No weather for you.");
+    }
+
+    //에러가 생길때는 각각 하나하나 따로 만들 필요가 없다고 생각해서 에러를 통일 했다.
+    //만약 어떤 API가 에러가 났는지 확인하려면 에러 날때 함수를 만들어 각각 따로 넣어야 될 것같다
+    navigator.geolocation.getCurrentPosition(onGeoOk, onGeoError);
+    navigator.geolocation.getCurrentPosition(onGeoOkone, onGeoError);
+    navigator.geolocation.getCurrentPosition(onGeoOktwo, onGeoError);
+
+
+
+
+  </script>
+</body>
+
+</html>

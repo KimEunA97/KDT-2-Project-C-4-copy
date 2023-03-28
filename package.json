@@ -1,0 +1,12 @@
+{
+  "name": "kdt-2-project-c-4",
+  "version": "1.0.0",
+  "description": "KDT-2-PROJECT-C_4조\r 강지민과소녀들",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "type": "module",
+  "author": "",
+  "license": "ISC"
+}
