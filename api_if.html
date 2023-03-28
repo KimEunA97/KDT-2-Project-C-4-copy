@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>현재 날씨,대기오염 API로 if문 작성</title>
+</head>
+<body>
+  <script>
+    
+    const API_KEY = "0e157a0c039c33991cc4121e2e911000";
+
+    // 현재 API if else
+    function onGeoOk(position) {
+   const latitude = position.coords.latitude;
+   const longitude = position.coords.longitude;
+   fetch(
+ `https://api.openweathermap.org/data/2.5/weather?lat=${latitude}&lon=${longitude}&lang=kr&appid=${API_KEY}&units=metric`, 
+   )
+   //api에서 기온으로 if else문 작성 
+      .then(response => response.json()) 
+      .then(data=>{if(data.main.temp>=15){//15도 이상일때 멘트 출력
+        console.log('15도이상,',(data,`현재 기온 : ${data.main.temp}도, 날씨 : ${data.weather[0].main},바람:${data.wind.speed}`));
+      }else if(data.main.temp>=10&&data.main.temp<15){ //10도 이상~15도 미만일때 멘트 출력
+        console.log('10도이상 15도미만,')
+      }else if(data.main.temp>=5&&data.main.temp<10){//5도 이상~10도 미만일때 멘트 출력
+        console.log('5도이상 10도미만,')
+      }else if(data.main.temp>=0&&data.main.temp<5){ 
+        console.log('0도이상 15도미만,');
+      }else{
+        console.log('영하로 추운 날씨,')
+      }
+    })
+}
+    // 현재 대기오염 API if문 작성
+    function onGeoOktwo(position) {
+   const latitude = position.coords.latitude;
+   const longitude = position.coords.longitude;
+   fetch(
+ `https://api.openweathermap.org/data/2.5/air_pollution?lat=${latitude}&lon=${longitude}&lang=kr&appid=${API_KEY}`, 
+   )
+      .then(response => response.json())
+      .then(data=>{if(data.list[0].main.aqi==4){ //대기질이 4일때
+        console.log("4입니다.")
+      }else{
+       console.log(data,`대기오염(1~5로 5가 나쁨):${data.list[0].main.aqi}`) //나머지
+      }})
+} 
+
+function onGeoError() {
+   alert("Can't find you. No weather for you.");
+}
+navigator.geolocation.getCurrentPosition(onGeoOk, onGeoError);
+navigator.geolocation.getCurrentPosition(onGeoOktwo, onGeoError);
+  </script>
+</body>
+</html>
