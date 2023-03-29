@@ -19,11 +19,11 @@ const server = http.createServer(function (request, response) {
 
       else {
         response.writeHead(200, { 'Content-type': 'text/html; charset=utf-8' });
-        console.log(data);
 
 
-        let buf = Buffer.from(data,'base64');
-        console.dir(buf);
+        console.dir(data);
+
+        let buf = Buffer.from(toString(data));
 
 
 
