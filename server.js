@@ -21,13 +21,13 @@ const server = http.createServer(function (request, response) {
         response.writeHead(200, { 'Content-type': 'text/html; charset=utf-8' });
 
 
-        console.dir(data);
-
-        let buf = Buffer.from(toString(data));
-
-
-
         response.end(data);
+
+        let buf = Buffer.from(data).toString('utf-8');
+        console.log(buf);
+        // let parseData = JSON.parse(buf);
+        // console.log(parseData);
+
       }
     })
 
