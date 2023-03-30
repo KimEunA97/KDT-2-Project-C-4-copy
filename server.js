@@ -2,6 +2,7 @@ import http from 'http'
 import fs from 'fs'
 import qs from 'querystring'
 import url from 'url'
+import { parse } from 'path'
 
 
 
@@ -23,8 +24,13 @@ const server = http.createServer(function (request, response) {
 
         response.end(data);
 
-        let buf = Buffer.from(data).toString('utf-8');
-        console.log(buf);
+        let buf = Buffer.from(data);
+        let bufStr = Buffer.toString(buf);
+        let bufJson = Buffer.from(bufStr).toJSON();
+
+
+
+        console.log(a);
         // let parseData = JSON.parse(buf);
         // console.log(parseData);
 
