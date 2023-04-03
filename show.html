@@ -21,11 +21,17 @@
 
     navigator.geolocation.getCurrentPosition(function (position) {
 
-      console.log(position);
       lat = position.coords.latitude;
       lon = position.coords.longitude;
-      console.log("위도 : " + lat + " 경도 :" + lon);
 
+      console.log("위도: " + lat, "경도: " + lon);
+
+      let location = function (lat, lon) {
+
+        this.lat = lat;
+        this.lon = lon;
+
+      }
 
     })
   </script>

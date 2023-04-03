@@ -12,9 +12,6 @@ const server = http.createServer(function (request, response) {
 
   if (request.method === 'GET' && request.url === '/') {
 
-
-    
-
     fs.readFile('./show.html', function (error, data) {
 
       if (error) {
@@ -27,13 +24,9 @@ const server = http.createServer(function (request, response) {
 
         response.end(data);
 
+        let buf = Buffer.from(data).toString('utf8');
+        console.dir(buf);
 
-        let a = Buffer.from(data).toString('utf-8');
-        let b = JSON.stringify(a);
-        console.log(b);
-
-        // let buf = Buffer.from(data);        
-        // buf.toString()
 
         // let parseData = JSON.parse(buf);
         // console.log(parseData);
@@ -72,5 +65,4 @@ server.listen(2080, function (error) {
     console.log("서버 구동");
   }
 });
-
 
