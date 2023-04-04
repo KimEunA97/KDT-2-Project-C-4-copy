@@ -14,7 +14,7 @@
 //   </form>`);
 //   if(req.url=="/upload" && req.method=="POST"){
 //     upload.single('img');
-//     console.log(req.file);
+//     console.log(req.file);e
 //   } 
 // });
 
@@ -27,6 +27,7 @@
 
 import http from 'http'
 import multer from 'multer'
+import fs from 'fs'
 
 const upload = multer({dest:'./image'});
 
@@ -41,7 +42,16 @@ const server = http.createServer((req, res) => {
         return;
       }
       console.log(req.file);
-      res.end("File uploaded successfully");
+      let readfile = fs.readFileSync(req.file.path);
+      console.log(readfile);
+
+      let decode = Buffer.from(readfile ,'base64'); //파일 디코딩
+      let makeDecodeFile = fs.writeFileSync('./make.jpg', decode); 
+      
+      
+      res.setHeader('Content-Type','text/html')
+      res.end(`<!DOCTYPE html>
+      <img src="./make.jpg"`);
     });
   } else {
     res.statusCode = 200;
