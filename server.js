@@ -24,7 +24,7 @@ const server = http.createServer(function (request, response) {
 
         response.end(data);
 
-        let buf = Buffer.from(data).toString();
+        let buf = Buffer.from(data);
         console.log(buf);
 
 
@@ -47,8 +47,7 @@ const server = http.createServer(function (request, response) {
 
     });
     request.on('end', function () {
-      let post = qs.parse(body);
-      console.log(post);
+      console.log(body)
     })
 
   }
@@ -56,7 +55,7 @@ const server = http.createServer(function (request, response) {
 
 })
 
-server.listen(2080, function (error) {
+server.listen(3000, function (error) {
 
   if (error) {
     console.log("서버 구동 실패");
