@@ -16,5 +16,8 @@
     "url": "https://github.com/kongukjae/KDT-2-Project-C-4/issues"
   },
   "homepage": "https://github.com/kongukjae/KDT-2-Project-C-4#readme",
-  "type":"module"
+  "type": "module",
+  "dependencies": {
+    "multer": "^1.4.5-lts.1"
+  }
 }
