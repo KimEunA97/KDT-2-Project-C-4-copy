@@ -1,8 +1,7 @@
 import http from 'http'
 import fs from 'fs'
 import qs from 'querystring'
-import url from 'url'
-import { parse } from 'path'
+
 
 
 
@@ -15,6 +14,7 @@ const server = http.createServer(function (request, response) {
     fs.readFile('./show.html', function (error, data) {
 
       if (error) {
+        response.writeHead(404);
         console.error("에러!");
       }
 
@@ -24,8 +24,8 @@ const server = http.createServer(function (request, response) {
 
         response.end(data);
 
-        let buf = Buffer.from(data).toString('utf8');
-        console.dir(buf);
+        let buf = Buffer.from(data).toString();
+        console.log(buf);
 
 
         // let parseData = JSON.parse(buf);

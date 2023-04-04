@@ -26,12 +26,12 @@
 
       console.log("위도: " + lat, "경도: " + lon);
 
-      let location = function (lat, lon) {
 
-        this.lat = lat;
-        this.lon = lon;
+      let location = new Object();
+      location.lat = lat;
+      location.lon = lon;
 
-      }
+      console.log(location);
 
     })
   </script>
