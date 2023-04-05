@@ -28,6 +28,7 @@
 import http from 'http'
 import multer from 'multer'
 import fs from 'fs'
+import path from 'path'
 
 const upload = multer({dest:'./image'});
 
@@ -48,10 +49,12 @@ const server = http.createServer((req, res) => {
       let decode = Buffer.from(readfile ,'base64'); //파일 디코딩
       let makeDecodeFile = fs.writeFileSync('./make.jpg', decode); 
       
-      
+      let pathimage= path.join(path.dirname(new URL(import.meta.url).pathname), 'make.jpg');
+      console.log(pathimage)
+      //const filePath = path.join(__dirname,'image.jpg');
       res.setHeader('Content-Type','text/html')
       res.end(`<!DOCTYPE html>
-      <img src="./make.jpg"`);
+      <img src="${pathimage}"`);
     });
   } else {
     res.statusCode = 200;
@@ -59,7 +62,7 @@ const server = http.createServer((req, res) => {
     res.end(`<!DOCTYPE html>
     <form action="/upload" method="POST" enctype="multipart/form-data">
         <input type="file" name="image" />
-        <button type="submit">Upl oad</button>
+        <button type="submit">Upload</button>
     </form>`);
   }
 });
