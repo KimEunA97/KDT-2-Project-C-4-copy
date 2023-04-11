@@ -1,0 +1,116 @@
+<!-- 로그인 html로 기본 틀 잡기 01 -->
+<!-- 주요사항
+로그인 텍스트
+LoginPageDivOne , LoginPageDivTwo, LoginPageDivThree 구역을 나눠서 html 코드를 만들기.
+아이폰 14크기로 틀을 잡고, 100 % 맞출 것
+로그인 소제목 / 라운드박스 로그인, 비밀번호 입력창 만들기
+로그인하기 버튼, 회원가입 가입하시겠습니까? 링크, 비밀번호를 잊어버리셨습니까? 링크 필요 -->
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>Login Page</title>
+	<style>
+		/* 아이폰 14 크기로 틀을 잡기 */
+		body {
+			margin: 0;
+			padding: 0;
+			width: 375px;
+			height: 812px;
+      background-color: #AFE1FD;
+		}
+
+		/* 로그인 텍스트의 간단한 소제목 스타일링 */
+		h2 {
+			text-align: center;
+			margin-top: 100px;
+			font-size: 24px;
+			font-weight: normal;
+		}
+
+		/* 로그인 박스 스타일링 */
+		.loginSection {
+			margin: 50px auto 0;
+			width: 300px;
+			height: 200px;
+			background-color: #F5F5F5;
+			border-radius: 20px;
+			padding: 20px;
+			box-sizing: border-box;
+		}
+
+		/* 입력창 스타일링 */
+		input[type="text"],
+		input[type="password"] {
+			display: block;
+			margin: 10px auto;
+			padding: 10px;
+			width: 100%;
+			box-sizing: border-box;
+			border-radius: 5px;
+			border: none;
+			background-color: #EDEDED;
+			font-size: 16px;
+			color: #333;
+			border-bottom: 1px solid #ccc;
+		}
+		
+		input[type="text"]:focus,
+		input[type="password"]:focus {
+			border-color: #4285F4;
+		}
+
+		/* 로그인 버튼 스타일링 */
+		button[type="submit"] {
+			display: block;
+			margin: 20px auto 0;
+			padding: 10px 20px;
+			border: none;
+			border-radius: 50px;
+			background-color: #f9f9f9;
+			color: #0c0c0c;
+			font-size: 16px;
+			cursor: pointer;
+		}
+
+		/* 링크 스타일링 */
+		a {
+			display: block;
+			text-align: center;
+			margin-top: 20px;
+			font-size: 14px;
+			color: #666;
+			text-decoration: none;
+		}
+		
+	</style>
+</head>
+<body>
+	<!-- LoginPageDivOne 상단 -->
+	<div id="LoginPageDivOne">
+		<!-- 100 뷰포인트 -->
+		<meta name="viewport" content="width=100">
+	</div>
+
+	<!-- LoginPageDivTwo 중간 -->
+	<div id="LoginPageDivTwo">
+		<!-- 로그인 텍스트와 로그인 박스 -->
+		<h2>Login</h2>
+		<div class="loginSection">
+			<input type="text" placeholder="User ID">
+			<input type="password" placeholder="Password">
+		</div>
+
+		<!-- 로그인 버튼 -->
+		<button type="submit">로그인</button>
+
+		<!-- 회원가입 링크와 비밀번호 재설정 링크 -->
+		<a href="#">회원가입을 하시겠습니까?</a>
+		<a href="#">비밀번호를 잊어버리셨습니까?</a>
+	</div>
+
+	<!-- LoginPageDivThree 하단 -->
+	<div id="LoginPageDivThree"></div>
+
+</body>
+</html>
