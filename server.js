@@ -1,67 +1,105 @@
-import http from 'http'
 import fs from 'fs'
-import qs from 'querystring'
+import express from 'express'
+const app = express();
 
 
 
-
-const server = http.createServer(function (request, response) {
-
+app.get('/', function (req, res) {
 
 
-  if (request.method === 'GET' && request.url === '/') {
+  fs.readFile('./index.html', function (err, data) {
 
-    fs.readFile('./show.html', function (error, data) {
+    if (err) {
 
-      if (error) {
-        response.writeHead(404);
-        console.error("에러!");
-      }
+      res.writeHead(404);
+      res.end();
 
-      else {
-        response.writeHead(200, { 'Content-type': 'text/html; charset=utf-8' });
+    }
 
-
-        response.end(data);
-
-        let buf = Buffer.from(data);
-        console.log(buf);
+    else {
+      res.writeHead(200, { 'Content-type': 'text/html; charset=utf-8' })
+      res.write(data);
+      res.end();
+    }
 
 
-        // let parseData = JSON.parse(buf);
-        // console.log(parseData);
-
-      }
-    })
-
-  }
+  })
 
 
-  let body = "";
-  if (request.method === 'POST' && request.url === '/location') {
+});
 
+app.listen(2080, (err) => {
 
-    request.on('data', function (data) {
+  if (err) {
 
-      body += data;
-
-    });
-    request.on('end', function () {
-      console.log(body)
-    })
+    console.log("Server Error!");
 
   }
 
+  else {
+    console.log("Server Working...")
+  }
 
 })
 
-server.listen(3000, function (error) {
 
-  if (error) {
-    console.log("서버 구동 실패");
-  }
-  else {
-    console.log("서버 구동");
-  }
-});
+// const server = http.createServer(function (request, response) {
+
+
+
+//   if (request.method === 'GET' && request.url === '/') {
+
+//     fs.readFile('./show.html', function (error, data) {
+
+//       if (error) {
+//         response.writeHead(404);
+//         console.error("에러!");
+//       }
+
+//       else {
+//         response.writeHead(200, { 'Content-type': 'text/html; charset=utf-8' });
+
+
+//         response.end(data);
+
+//         let buf = Buffer.from(data);
+//         console.log(buf);
+
+
+//         // let parseData = JSON.parse(buf);
+//         // console.log(parseData);
+
+//       }
+//     })
+
+//   }
+
+
+//   let body = "";
+//   if (request.method === 'POST' && request.url === '/location') {
+
+
+//     request.on('data', function (data) {
+
+//       body += data;
+
+//     });
+//     request.on('end', function () {
+//       console.log(body)
+//     })
+
+//   }
+
+
+// })
+
+// server.listen(3000, function (error) {
+
+//   if (error) {
+//     console.log("서버 구동 실패");
+//   }
+//   else {
+//     console.log("서버 구동");
+//   }
+// });
 
