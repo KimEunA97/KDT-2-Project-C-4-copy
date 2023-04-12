@@ -1,0 +1,222 @@
+<!-- 모달창 클래스 추가 삭제 말고 style.display로 간단하게 하는 방법 알아보는 과정
+수정중 -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>메인화면+모달창</title>
+  <style>
+  body {
+  width: 390px;
+  height: 1128px;
+  background-color: #AFE1FD;
+  margin: 0;
+}
+
+
+
+#MainPageDivOne {
+  height: 15%;
+  /* width: 100%; */
+  display: flex;
+  justify-content:space-around; 
+  align-items: center; 
+}
+/* 로고 이미지 버튼 */
+#homeBtn{
+  height: 50%;
+  width: 10%;
+  background-color:transparent;
+  border: none;
+}
+#homeBtnimg{
+  height: 100%;
+  width: 100%;
+}
+/* 보드 이미지 버튼 */
+#boardBtn{
+  height: 50%;
+  width: 10%;
+  background-color:transparent;
+  border: none;
+}
+#boardimg{
+  height: 100%;
+  width: 100%;
+}
+/*  마이페이지 이미지 버튼 */
+#mypageBtn{
+  height: 50%;
+  width: 10%;
+  background-color:transparent;
+  border: none;
+}
+#mypageBtnimg{
+  height: 100%;
+  width: 100%;
+}
+
+/* div2 멘트 */
+#MainPageDivTwo {
+  height: 5%;
+  /* width: 100%; */
+  background-color: white;
+  border-radius: 20px;
+}
+#mentUserName>p{
+  margin: 0;
+}
+#ment{
+  display: flex;
+  flex-direction: row;
+}
+#mentWheather{
+  width: 70%;
+}
+#mentWheather>p{
+  margin: 0;
+}
+
+/* div3 커스텀 */
+#MainPageDivThree {
+  height: 65%;
+  /* width: 100%; */
+  border-radius: 50px;
+  margin: 25px;
+  background-color: white;
+/*   overflow-y: scroll; 커스텀일때 세로 스크롤을 해서 보여줄수 있게 하는 것 */ 
+}
+/* 새로고침 버튼 */
+#refreshBtn{
+  
+  height: 30px;
+  border-radius: 50px;
+
+}
+
+
+/* div4 나머지 날씨 */
+#MainPageDivFour {
+  height: 15%;
+  width: 100%;
+  background-color: white;
+  border-radius: 20px;
+
+}
+
+/* 모달 */
+#modalBackground {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.3);
+  display: none;
+  z-index: 1;
+}
+
+#modal {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  width: 300px;
+  height: 30%;
+  transform: translate(-50%, -50%);
+  background-color: #fff;
+  border-radius: 10px;
+  z-index: 2;
+  display: none;
+}
+
+#modalText {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px;
+  background-color: #ddd;
+  border-radius: 10px 10px 0 0;
+}
+
+#modalText h3 {
+  margin: 0;
+}
+
+#modalClose {
+  border: none;
+  background-color: transparent;
+  font-size: 30px;
+  cursor: pointer;
+}
+
+#modalDayOne {
+  padding: 10px;
+  text-align: center;
+}
+
+
+
+
+  </style>
+</head>
+<body>
+  <div id="MainPageDivOne">
+    <button id="homeBtn"><img id="homeBtnimg"src="logo.png" alt="오착로고"></button>
+    <div id="currentWeather"><p>현재 날씨</p></div>
+    <div id="sensoryTemperature"><p>체감온도</p></div>
+    <button id="boardBtn"><img id="boardBtnimg"src="board.png" alt="홈게시판"></button>
+    <button id="mypageBtn"><img id="myPageBtnimg"src="myPage.png" alt="홈마이페이지버튼 "></button>
+  </div>
+  
+  <div id="MainPageDivTwo">
+    <div id="mentUserName"><p>닉네임</p></div>
+    <div id="ment">
+      <img src="commentMask" alt="마스크">
+      <img src="commentUmbrella" alt="우산">
+      <div id="mentWheather"><p>멘트</p></div>
+    </div>
+  </div>
+  
+  <div id="MainPageDivThree">
+    <button id="refreshBtn">↺</button>
+
+  </div>
+  
+  <div id="MainPageDivFour"></div>
+  <div id="modalBackground"></div>
+  <div id="modal">
+    <div id="modalText">
+      <h3>날짜 강수량 최저 최고</h3>
+      <button id="modalClose">&times;</button>
+    </div>
+    <div id="modalDayOne">
+      <p>월-30%-1도-17도</p>
+    </div>
+  </div>
+  <script>
+const modal = document.querySelector('#modal');
+const modalBackground = document.querySelector('#modalBackground');
+const modalClose = document.querySelector('#modalClose');
+const MainPageDivFour = document.querySelector('#MainPageDivFour');
+
+MainPageDivFour.addEventListener('click', () => {
+  modal.style.display='block'
+});
+
+modalClose.addEventListener('click', () => {
+  modal.classList.remove('active');
+  modalBackground.classList.remove('active');
+});
+
+modalBackground.addEventListener('click', () => {
+  modal.classList.remove('active');
+  modalBackground.classList.remove('active');
+});
+
+  </script>
+  
+  
+</body>
+</html>
