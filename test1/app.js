@@ -4,6 +4,11 @@ const port = 3000;
 
 app.set('view engine', 'ejs');
 
+app.get('/board_write',(req, res)=>{
+  res.render('write');
+  //res.send('<h1>나 보드야~</h1>')
+})
+
 app.get('/login', function (req, res) {
   res.render('login');
 });
