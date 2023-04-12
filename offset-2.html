@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>offset연습2</title>
+  <!-- 
+    1.z-index로 div1을 앞으로 보이게 한다.(스크롤하면 div2,div3,div4가 뒤로 가는 것처럼 보이게)
+    2.root를 relative(부모)로 주고 div2,3,4를 absolute으로 하여 위치고정
+    다음에 해 볼 것
+    1. div2,3,4의 크기를 px라고 했는데 웹으로 만들 때 %로 나눠 폰화면마다 알맞게 설정했었다. 그렇기때문에 px를 %로 바꿔도 실행이 되는지
+    2. 
+  
+    -->
+  <style>
+    body{
+      height: 2000px;
+      display: flex;
+      flex-direction: column;
+      margin: 0;
+    }
+    #root{
+      position: relative;
+    }
+  #div1 {
+        position: fixed;
+        top: 0;
+        left: 0;
+        background-color: lightblue;
+        height: 300px;
+        width: 100%;
+        transition: all 0.5s ease-in-out;
+        z-index: 1;
+      }
+      #div1.small {
+        height: 200px;
+      }
+      #div1 .text {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      }
+      #div1 .text span:first-child {
+        margin-right: 10px;
+      }
+      #div2{
+        position: absolute; /* root을 부모로 하고 나머지 div를 자식으로 설정함. */
+        top: 300px;/* 쓴 기준은 div1크기값을 넣음 */
+        height: 100px;
+        width: 100%;
+        background-color: khaki;
+      }
+      #div3{
+        position: absolute;
+        top: 400px;/* 쓴 기준은 div2에 있는 top+height*/
+        height: 600px;
+        background-color: rebeccapurple;
+        width: 100%;
+      }
+      #div4{
+        position: absolute;
+        top:1000px; /* 쓴 기준은 div3에 있는 top+height */
+        height: 1000px;
+        background-color:darkgray;
+        width: 100%;
+
+      }
+    </style>
+  </head>
+  <body>
+    <div class="root">
+      <div id="div1">
+        <div class="text">
+          <span>안녕</span>
+          <span>하세요</span>
+        </div>
+      </div>
+      <div id="div2">
+        <p>멘트창</p>
+      </div>
+      <div id="div3">
+        <p>커스텀창</p>
+      </div>
+      <div id="div4">
+        <p>날씨창</p>
+      </div>
+
+    </div>
+
+    <script>
+      window.onscroll = function () {
+        var div1 = document.getElementById("div1");
+        var scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+
+        if (scrollTop > 0) {
+          div1.classList.add("small");
+          // div1.querySelector(".text span:first-child").style.marginRight = "10px";
+
+          // div1.querySelector(".text span:last-child").style.Top = "300px";
+          div1.querySelector(".text span:last-child").style.top = "300px";
+          div1.querySelector(".text span:last-child").style.display = "none";
+          div1.querySelector(".text span:first-child").style.fontSize = "10px";
+
+        } else {
+          div1.classList.remove("small");
+          div1.querySelector(".text span:first-child").style.marginRight = "0";
+          div1.querySelector(".text span:last-child").style.display = "inline-block";
+          div1.querySelector(".text span:last-child").style.color = "blue";
+          div1.querySelector(".text span:first-child").style.fontSize = "30px";
+          div1.querySelector(".text span:last-child").style.fontSize = "30px";
+
+
+        }
+      };
+    </script>
+  </body>
+</html>
