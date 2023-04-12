@@ -1,0 +1,45 @@
+{
+  "name": "kdt-2-project-c-4",
+  "version": "1.0.0",
+  "description": "KDT-2-PROJECT-C_4조\r 강지민과소녀들",
+  "main": "index.js",
+  "dependencies": {
+    "append-field": "^1.0.0",
+    "buffer-from": "^1.1.2",
+    "concat-stream": "^1.6.2",
+    "busboy": "^1.6.0",
+    "core-util-is": "^1.0.3",
+    "inherits": "^2.0.4",
+    "isarray": "^1.0.0",
+    "media-typer": "^0.3.0",
+    "mime-db": "^1.52.0",
+    "mime-types": "^2.1.35",
+    "minimist": "^1.2.8",
+    "mkdirp": "^0.5.6",
+    "multer": "^1.4.5-lts.1",
+    "process-nextick-args": "^2.0.1",
+    "readable-stream": "^2.3.8",
+    "safe-buffer": "^5.1.2",
+    "object-assign": "^4.1.1",
+    "streamsearch": "^1.1.0",
+    "type-is": "^1.6.18",
+    "string_decoder": "^1.1.1",
+    "typedarray": "^0.0.6",
+    "util-deprecate": "^1.0.2",
+    "xtend": "^4.0.2"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/kongukjae/KDT-2-Project-C-4.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/kongukjae/KDT-2-Project-C-4/issues"
+  },
+  "homepage": "https://github.com/kongukjae/KDT-2-Project-C-4#readme"
+}
