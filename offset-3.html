@@ -1,0 +1,145 @@
+<!-- 메인을 offset으로 할 때 스크롤하면 텍스트가 가로정렬-> 세로정렬로 바꿀 수 있다 -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>offset연습3</title>
+  <!-- 문제점
+    1.div1 span스타일이 총 2가지이어야 하는데 3가지임. 시작할때 보여주는 div1 text과 small제거한 버전이랑 스타일을 똑같이 지정해주면 될것같다. 
+    ㄴ 그러면 div1에 small제거한 버전 스타일 똑같이 하거나 div1을 기준으로 하고 small remove한 곳에 스타일을 빼거나.
+    지금 해 볼것
+    1. display:table-cell를 span에 적용해보자.
+    다음에 해 볼 것
+    1. div2,3,4의 크기를 px라고 했는데 웹으로 만들 때 %로 나눠 폰화면마다 알맞게 설정했었다. 그렇기때문에 px를 %로 바꿔도 실행이 되는지
+    -->
+  <style>
+    body{
+      height: 2000px;
+      display: flex;
+      flex-direction: column;
+      margin: 0;
+    }
+    #root{
+      position: relative;
+    }
+  #div1 {
+        position: fixed;
+        top: 0;
+        left: 0;
+        background-color: lightblue;
+        height: 300px;
+        width: 100%;
+        transition: all 0.5s ease-in-out;
+        z-index: 1;
+      }
+      #div1.small {
+        height: 200px;
+      }
+      /* text로 display를 table로 지정 */
+      #div1 .text {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        display: table;
+        justify-content: center;
+        align-items: center;
+      }
+/*       #div1 .text span:first-child {
+        margin-right: 10px;
+      } */
+      #div2{
+        position: absolute; 
+        top: 300px;
+        height: 100px;
+        width: 100%;
+        background-color: khaki;
+      }
+      #div3{
+        position: absolute;
+        top: 400px;
+        height: 600px;
+        background-color: rebeccapurple;
+        width: 100%;
+      }
+      #div4{
+        position: absolute;
+        top:1000px;
+        height: 1000px;
+        background-color:darkgray;
+        width: 100%;
+      }
+/* 이렇게 하면 되는데 고칠게 많아짐      
+ .root{
+        display: table;
+        background-color: khaki;
+
+      }
+      #div1{
+        position: fixed;
+        background-color: aliceblue;
+      }
+      .text{
+        display: table-row;
+        background-color: plum;
+      }
+      #div2{
+        display: table-row;
+        background-color: rgb(244, 188, 244);
+      } */
+    </style>
+  </head>
+  <body>
+    <div class="root">
+      <div id="div1">
+        <div class="text">
+          <span>안녕</span>
+          <span>하세요</span>
+        </div>
+      </div>
+      <div id="div2">
+        <p>멘트창</p>
+      </div>
+      <div id="div3">
+        <p>커스텀창</p>
+      </div>
+      <div id="div4">
+        <p>날씨창</p>
+      </div>
+
+    </div>
+
+    <script>
+      window.onscroll = function () {
+        var div1 = document.getElementById("div1");
+        var scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+
+        if (scrollTop > 0) {
+          div1.classList.add("small");
+          // div1.querySelector(".text span:first-child").style.marginRight = "10px";
+
+          // div1.querySelector(".text span:last-child").style.Top = "300px";
+          div1.querySelector(".text span:last-child").style.top = "300px"; //.text가 없어도 실행이 됨. text에는 span이 포함되어있기때문에 정확하게 쓰기 위해 쓴 것.
+          // div1.querySelector(".text span:last-child").style.display = "none"; 
+          div1.querySelector(".text span:first-child").style.fontSize = "10px";
+          div1.querySelector(".text span:last-child").style.display = "table-cell"; 
+          div1.querySelector(".text span:first-child").style.display = "table-cell";
+
+        } else {
+          div1.classList.remove("small");
+          div1.querySelector(".text span:first-child").style.marginRight = "0";
+          div1.querySelector(".text span:last-child").style.display = "inline-block";
+          div1.querySelector(".text span:last-child").style.color = "blue";
+          div1.querySelector(".text span:first-child").style.fontSize = "30px";
+          div1.querySelector(".text span:last-child").style.fontSize = "30px";
+          div1.querySelector(".text span:last-child").style.display = "table-row"; 
+          div1.querySelector(".text span:first-child").style.display = "table-row";
+
+
+        }
+      };
+    </script>
+  </body>
+</html>
