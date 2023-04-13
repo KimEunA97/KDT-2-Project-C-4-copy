@@ -1,11 +1,12 @@
 //GPS
 
+
 let lat, lon;
 let lattag = document.getElementById('lattag');
 let lontag = document.getElementById('lontag');
 
 
-navigator.geolocation.getCurrentPosition(function (position) {
+navigator.geolocation.getCurrentPosition(function location(position) {
 
   lat = position.coords.latitude;
   lon = position.coords.longitude;
@@ -23,3 +24,5 @@ navigator.geolocation.getCurrentPosition(function (position) {
   console.log(location);
 
 })
+
+export default location
