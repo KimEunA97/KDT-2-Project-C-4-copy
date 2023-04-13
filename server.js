@@ -1,6 +1,7 @@
 import http from 'http'
 import fs from 'fs'
 import qs from 'querystring'
+// import htmlparser from 'htmlparser2';
 
 
 
@@ -11,7 +12,7 @@ const server = http.createServer(function (request, response) {
 
   if (request.method === 'GET' && request.url === '/') {
 
-    fs.readFile('./show.html', function (error, data) {
+    fs.readFile('./gps.html', function (error, data) {
 
       if (error) {
         response.writeHead(404);
@@ -24,8 +25,29 @@ const server = http.createServer(function (request, response) {
 
         response.end(data);
 
+
+        // let handler = new htmlparser.DomHandler(function (error, dom) {
+
+        //   if (error) {
+
+
+        //   }
+        //   else {
+
+        //   }
+
+        // })
+
+        // let parser = new htmlparser.Parser(handler);
+        // parser.write(data);
+        // parser.end();
+        // console.log(data);
+
         let buf = Buffer.from(data);
-        console.log(buf);
+        let jsbuf = buf.toString();
+
+
+
 
 
         // let parseData = JSON.parse(buf);
@@ -47,7 +69,12 @@ const server = http.createServer(function (request, response) {
 
     });
     request.on('end', function () {
-      console.log(body)
+      console.log(body);
+
+
+
+      response.writeHead(200);
+      response.end()
     })
 
   }
@@ -55,7 +82,7 @@ const server = http.createServer(function (request, response) {
 
 })
 
-server.listen(3000, function (error) {
+server.listen(2080, function (error) {
 
   if (error) {
     console.log("서버 구동 실패");
