@@ -1,25 +1,47 @@
 var http = require('http');
 var fs = require('fs');
-var url = require('url');
-
+var url = require('url');//이제 url은 모듈 url을 가리킨다 
 var app = http.createServer(function(request,response){
-    var _url = request.url;
+    var _url = request.url;//var url  // _url
     var queryData = url.parse(_url, true).query;
-    console.log(queryData.id);//HTML  // console.log(queryData); => [Object: null prototype] { id: 'HTML' }   
-    // url=>  '?id=HTML' url 을 분석해서 값을 추출해야 한다.  분석 = parse 
-    if(_url== '/'){
-      _url = '/index.html';
+    var title = queryData.id; // 깔끔하게 보기위해서 
+    console.log(queryData.id);// HTML //css // JavaScript
+    // console.log(_url);
+    if(_url == '/'){
+      // _url = '/index.html';    // templete 가져와서 필요 없음. 
+      title= "heen Homepage !";   // 최상의 경로 3000일때 표시 . 
     }
     if(_url == '/favicon.ico'){
       return response.writeHead(404);
     }
     response.writeHead(200);
-    console.log(__dirname + _url);  //콘솔에 표시된다. web-Node/1.html
-    //자바스크립트 코드를 통해서 읽어들이게 될 파일을 만들수 있다. 
-    response.end(queryData.id); // 화면 , 콘솔에 둘 다 HTML 출력  
-
+    // console.log(__dirname + url);
     // response.end(fs.readFileSync(__dirname + _url));
-    //readFileSync ( node.js ) 그경로의 파일을 읽어서 가져오는것 .  //http://localhost:3000/1.html  => jungheeeun :/1.html
+
+    //이렇게 만들어놓으면 몇천개이던지 , 바꿀수 있는 큰 효과이다. 
+    var templete = `
+    <!doctype html>
+<html>
+<head>
+  <title>WEB1 - ${title}</title> 
+  <meta charset="utf-8">
+</head>
+<body>
+  <h1><a href="index.html">WEB</a></h1>
+  <ol>
+    <li><a href="/?id=HTML">HTML</a></li>
+    <li><a href="/?id=CSS">CSS</a></li>
+    <li><a href="/?id=JavaScript">JavaScript</a></li>
+  </ol>
+  <h2>${title}</h2>
+  <p><a href="https://www.w3.org/TR/html5/" target="_blank" title="html5 speicification">Hypertext Markup Language (HTML)</a> is the standard markup language for <strong>creating <u>web</u> pages</strong> and web applications.Web browsers receive HTML documents from a web server or from local storage and render them into multimedia web pages. HTML describes the structure of a web page semantically and originally included cues for the appearance of the document.
+  <img src="coding.jpg" width="100%">
+  </p><p style="margin-top:45px;">HTML elements are the building blocks of HTML pages. With HTML constructs, images and other objects, such as interactive forms, may be embedded into the rendered page. It provides a means to create structured documents by denoting structural semantics for text such as headings, paragraphs, lists, links, quotes and other items. HTML elements are delineated by tags, written using angle brackets.
+  </p>
+</body>
+</html>
+    `;
+    response.end(templete);
  
 });
-app.listen(3000);
+app.listen(3050);
