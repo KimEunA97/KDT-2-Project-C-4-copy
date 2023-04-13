@@ -2,7 +2,6 @@ import http from 'http'
 import fs from 'fs'
 import qs from 'querystring'
 // import htmlparser from 'htmlparser2';
-import location from './gps.js'
 
 
 
@@ -13,7 +12,7 @@ const server = http.createServer(function (request, response) {
 
   if (request.method === 'GET' && request.url === '/') {
 
-    fs.readFile('./gps.html', function (error, data) {
+    fs.readFile('./test.html', function (error, data) {
 
       if (error) {
         response.writeHead(404);
@@ -46,7 +45,6 @@ const server = http.createServer(function (request, response) {
 
         let buf = Buffer.from(data);
         let jsbuf = buf.toString();
-        console.dir(location);
 
 
 
