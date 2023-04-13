@@ -20,6 +20,6 @@ var app = http.createServer(function(request,response){
 
     // response.end(fs.readFileSync(__dirname + _url));
     //readFileSync ( node.js ) 그경로의 파일을 읽어서 가져오는것 .  //http://localhost:3000/1.html  => jungheeeun :/1.html
-
+ 
 });
 app.listen(3000);
