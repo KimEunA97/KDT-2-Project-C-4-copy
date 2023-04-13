@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>display-table 정의</title>
+  <style>
+    div{
+      display: table;
+      background-color: plum;
+      height: 100px;
+      border-spacing: 10px; /* 여백을 안주면 p와 겹쳐서 여백을 줌 */
+      width: 100%;
+
+    }
+    p{
+      display: table-cell; /* 만약 table-row라면 세로로 보임(그대신 높이 조절해야 할듯) */
+      width: 50px;
+      height: 10px;
+      background-color: khaki;
+      border: 1px solid black;
+    }
+  </style>
+</head>
+<body>
+  <div>
+    <p></p>
+    <p></p>
+    <p></p>
+  </div>
+</body>
+</html>
