@@ -11,15 +11,10 @@ var app = http.createServer(function(request,response){
           console.log(filelist);//[ 'CSS', 'HTML', 'JavaScript' ]
           var title = "heeun page"
           var description = "good night"
-        //   var list = `<ol>
-        //   <li><a href="/?id=HTML">HTML</a></li>
-        //   <li><a href="/?id=CSS">CSS</a></li>
-        //   <li><a href="/?id=JavaScript">JavaScript</a></li>
-        // </ol>`;
           var list = '<ol>';
           var i = 0 ;
           while(i < filelist.length){
-            list = list + `<li>${filelist[i]}</li>`
+            list = list + `<li><a href="/?id=${filelist[i]}">${filelist}</a></li>`
             i = i + 1;
           }
           list = list + '<ol>';
