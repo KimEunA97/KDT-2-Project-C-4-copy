@@ -1,6 +1,6 @@
 var http = require('http');
 var fs = require('fs');
-var url = require('url');//이제 url은 모듈 url을 가리킨다 
+var url = require('url');
 var app = http.createServer(function(request,response){
     var _url = request.url;//var url  // _url
     var queryData = url.parse(_url, true).query;
@@ -8,8 +8,8 @@ var app = http.createServer(function(request,response){
 
     if( pathname === "/"){
       if(queryData.id === undefined){
-        
-    fs.readFile(`data/${queryData.id}`, 'utf8', function(err, description){
+        //만약 id 부분이 undefined 라면 ( home : 홈페이지 부분 ) 
+  
       var title = "heeun page"
       var description = "good night"
       var templete = `
@@ -33,7 +33,6 @@ var app = http.createServer(function(request,response){
       `;
       response.writeHead(200);
       response.end(templete);
-    });
   }else{  
     fs.readFile(`data/${queryData.id}`, 'utf8', function(err, description){
       var title = queryData.id; 
@@ -54,7 +53,7 @@ var app = http.createServer(function(request,response){
     <h2>${title}</h2>
     <p>${description} </p>
   </body>
-  </html>
+  </html> 
       `;  
       response.writeHead(200);
       response.end(templete);
