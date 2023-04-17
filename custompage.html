@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<style>
+  *{
+    border: 1px red solid;
+  }
+  #customPageContainer {
+    width: 390px;
+    height: 844px;
+    display: flex;
+    flex-direction: column;
+  }
+  #customPageDivOne {
+    width: 100%;
+    height: 10%;
+    display: flex;
+  }
+  #customPageDivOne>div,img {
+    flex: 1;
+  }
+  #customPageDivTwo {
+    width: 100%;
+    height: 5%;
+    display: flex;
+  }
+  #customPageDivTwo>:nth-child(1) {
+    flex: 1;
+  }
+  #customPageDivTwo>:nth-child(2) {
+    flex: 3;
+  }
+  #customPageDivTwo>:nth-child(2)>:nth-child(1)>:nth-child(1) {
+    width: 100%;
+    height: 100%;
+  }
+  #customPageDivTwo>:nth-child(3) {
+    flex: 1;
+  }
+  #customPageDivTwo>:nth-child(4) {
+    flex: 1;
+  }
+  #customPageDivTwo>:nth-child(5) {
+    flex: 1;
+  }
+  
+  #customPageDivThree {
+    width: 100%;
+    height: 80%;
+  }
+
+</style>
+<body>
+  <div id="customPageContainer">
+    <div id="customPageDivOne">
+      <img src="./image/옷착로고.png"></img>
+      <div></div>
+      <div></div>
+      <img src="./image/게시판 로고.png"></img>
+      <img src="./image/마이페이지 로고.png"></img>
+    </div>
+    <div id="customPageDivTwo">
+      <div></div>
+      <div>
+        <form>
+          <select name="temp" >
+            <option value="select">=== 선택 ===</option>
+            <option value="">0도 이하</option>
+            <option value="">0~10도</option>
+            <option value="">10~20도</option>
+            <option value="">20도~30도</option>
+          </select>
+        </form>
+      </div>
+      <div></div>
+      <div></div>
+      <div></div>
+    </div>
+    <div id="customPageDivThree"></div>
+  </div> 
+</body>
+</html>
