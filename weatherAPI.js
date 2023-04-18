@@ -8,29 +8,10 @@ console.log(url)
 let nx = "55";
 let ny = "127";
 
-// let todayDate = date;
 
 const dt = new Date();
-const st = dt.toLocaleDateString();
+const year = dt.getFullYear();
+const month = (dt.getMonth() + 1 < 10 ? '0' : '') + (dt.getMonth() + 1);
+const day = (dt.getMonth() + 1 < 10 ? '0' : '') + dt.getDate();
 
-console.dir(st)
-
-let newStr = st.replace(/. /g, "").slice(0,-1);
-console.log(newStr)
-
-// let year = dt.getFullYear();
-
-// function getMonth(value) {
-//   if (dt.getMonth() + 1 < 10) {
-
-//     let act = dt.getMonth() + 1;
-//     let td = "0"
-//     let month = td + act;
-
-//     console.log(month);
-//     return month;
-//   }
-
-// }
-// getMonth();
-// console.log(month)
+console.log(month)
