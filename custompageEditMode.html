@@ -65,6 +65,7 @@
     height: 5%;
     display: flex;
     justify-content: space-around;
+    position: relative;
   }
   #customPageDivThree>:nth-child(1)>:nth-child(1)>div{ /*버튼태그들*/
     width: 10%;
@@ -72,7 +73,7 @@
     background-color: gray;
   }
   #customPageDivThree>:nth-child(1)>:nth-child(1)>:nth-child(1){ 
-    background-color: green;
+    background-color: greenyellow;
   }
 
   #customPageDivThree>:nth-child(1)>:nth-child(2){ /*옷장 (옷걸이 담고 있는 부모)*/
@@ -80,6 +81,8 @@
     height: 85%;
     display: grid;
     grid-template-columns: 1fr 1fr;
+    overflow-y: auto;
+
   }
   #customPageDivThree>:nth-child(1)>:nth-child(2)>div{ /*옷걸이 태그*/
     width: 80%;
@@ -97,9 +100,17 @@
   #customPageDivThree>:nth-child(1)>:nth-child(3)>div{
     flex:1;
   }
-  #customPageDivThree>:nth-child(1)>:nth-child(3)>:nth-child(2){
+  #customPageDivThree>:nth-child(1)>:nth-child(3)>:nth-child(1){
     text-align: center;
     box-shadow: 3px 3px 3px;
+    background-color: greenyellow;
+  }
+  #customPageDivThree>:nth-child(1)>:nth-child(3)>:nth-child(3){ /*편집 완료 및 페이지 삭제*/
+    text-align: center;
+    box-shadow: 3px 3px 3px;
+    background-color: red;
+    position: relative;
+
   }
   #customPageDivThree>:nth-child(1)>:nth-child(4){
     width: 100%;
@@ -160,9 +171,9 @@
           </div>
         </div>
         <div>
+          <div>편집 완료</div>
           <div></div>
-          <div>페이지 편집</div>
-          <div></div>
+          <div>페이지 삭제</div>
         </div>
         <div></div>
       </div>
