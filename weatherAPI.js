@@ -12,6 +12,8 @@ let ny = "127";
 const dt = new Date();
 const year = dt.getFullYear();
 const month = (dt.getMonth() + 1 < 10 ? '0' : '') + (dt.getMonth() + 1);
-const day = (dt.getMonth() + 1 < 10 ? '0' : '') + dt.getDate();
+const day = (dt.getDate() + 1 < 10 ? '0' : '') + dt.getDate();
 
-console.log(month)
+const theDate = `${year}${month}${day}`
+
+console.log(theDate)
