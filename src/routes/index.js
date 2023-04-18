@@ -1,5 +1,6 @@
 import express from 'express'
 let router = express.Router();
+// import fs from 'fs'
 
 router.get('/', function(req, res) {  
     res.send('GET handler for /dogs route.');
