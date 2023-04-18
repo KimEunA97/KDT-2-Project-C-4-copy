@@ -1,0 +1,337 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>메인화면+모달창</title>
+  <style>
+  body {
+  width: 390px;
+  height: 1128px;
+  background-color: #AFE1FD;
+  margin: 0;
+}
+#MainPageDivOne {
+height: 15%;
+/* width: 100%; */
+display: flex;
+justify-content:space-around;
+align-items: center;
+flex-direction: column;
+margin: 3%;
+}
+ /* 상단 1(로고, 대전광역시, 게시판, 마이페이지)  */
+#one{
+display: flex;
+height: 50%;
+width: 100%;
+flex-direction: row;
+/ align-items: flex-end; */
+justify-content: space-between;
+}
+
+/* 로고 이미지 버튼 */
+#homeBtn{
+/* height: 50%; */
+width: 20%;
+background-color:transparent;
+border: none;
+background-image: url('./logo.png');
+background-size: contain; 
+background-repeat: no-repeat;
+}
+/*background-size: cover; /버튼안에 꽉차게 표시하는 것(이미지가 크면 잘림)/
+
+
+/* 지역 */
+#area>p{
+font-size: 20px;
+margin-top: 50%;
+}
+
+#boardBtn{
+/* height: 50%; */
+width: 12%;
+background-color:transparent;
+border: none;
+background-image: url('./board.png'); 
+background-size: contain; 
+background-repeat: no-repeat; 
+}
+
+/* 마이페이지 이미지 버튼 */
+#mypageBtn{
+/* height: 50%; */
+width: 12%;
+background-color:transparent;
+border: none;
+background-image: url('./mypage.png'); 
+background-size: contain; 
+background-repeat: no-repeat; 
+}
+
+/* 상단 2(실시간 기온, 체감온도)*/
+#two{
+display: flex;
+flex-direction: row;
+height: 50%;
+width: 100%;
+justify-content:center;
+}
+
+#currentWeather>p:nth-child(1){
+font-size: 40px;
+margin: 0;
+}
+#currentWeather>p:nth-child(2){
+font-size: 15px;
+margin: 0;
+}
+
+#sensoryTemperature{
+margin-left: 30px;
+margin-top: 20px;
+
+}
+#sensoryTemperature>p:nth-child(1){
+  font-size: 40px;
+  margin: 0;
+}
+#currentWeather>p:nth-child(2){
+  font-size: 15px;
+  margin: 0;
+}
+/* 체감온도 */
+#sensoryTemperature{
+  margin-left: 30px;
+  margin-top: 20px;
+
+}
+#sensoryTemperature>p:nth-child(1){
+  font-size: 30px;
+  margin: 0;
+}
+#sensoryTemperature>p:nth-child(2){
+  font-size: 10px;
+  margin: 0;
+}
+
+
+
+/* div2 멘트 */
+#MainPageDivTwo {
+  height: 5%;
+  /* width: 100%; */
+  background-color: white;
+  border-radius: 20px;
+}
+#mentUserName>p{
+  margin: 0;
+}
+#ment{
+  display: flex;
+  flex-direction: row;
+}
+#mentWheather{
+  width: 70%;
+}
+#mentWheather>p{
+  margin: 0; 
+}
+
+/* div3 커스텀 */
+#MainPageDivThree {
+  height: 65%;
+  width: 100%;
+
+}
+#three{
+  height: 100%;
+  /* width: 100%; */
+  border-radius: 50px;
+  margin: 5%;
+  background-color: white;
+  display: flex; /* 새로고침을 위해서 임의로 일단 스타일 잡은 것입니다. */
+  justify-content: flex-end; /* 새로고침을 위해서 임의로 일단 스타일 잡은 것입니다. */
+  /*   overflow-y: scroll; 커스텀일때 세로 스크롤을 해서 보여줄수 있게 하는 것 */ 
+  position: relative;
+  /* z-index: 2; */
+}
+
+
+
+
+/* 새로고침 버튼 */
+#refreshBtn{
+  height: 40px;
+  width: 40px;
+  /* border-radius: 50px; */
+  background-color:transparent;
+  border: none;
+  background-image: url('./refresh.png'); /*  //이미지는 여기에 */
+  background-size: contain; /*이미지가 버튼안에 모두 보이게*/
+  background-repeat: no-repeat; /*이미지가 반복되지 않게*/
+  background-size: cover; 
+  /* 버튼안에 꽉차게 표시하는 것 이미지가 크면 잘림 */
+  position: absolute;
+  z-index: 4;
+  margin-left: 320px;
+}
+
+/* div4 나머지 날씨 */
+#MainPageDivFour {
+  height: 15%;
+  width: 100%;
+  background-color: white;
+  border-radius: 20px;
+
+}
+
+/* 모달 */
+#modalBackground {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.3);
+  display: none;
+  /* z-index: 1; */
+}
+
+#modal {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  width: 300px;
+  height: 30%;
+  transform: translate(-50%, -50%);
+  background-color: #fff;
+  border-radius: 10px;
+  z-index: 3;
+  display: none;
+}
+
+#modalText {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px;
+  background-color: #ddd;
+  border-radius: 10px 10px 0 0;
+}
+
+#modalText h3 {
+  margin: 0;
+}
+
+#modalClose {
+  border: none;
+  background-color: transparent;
+  font-size: 30px;
+  cursor: pointer;
+}
+
+#modalDayOne {
+  padding: 10px;
+  text-align: center;
+}
+
+#modal.active {
+  display: block;
+}
+
+#modalBackground.active {
+  display: block;
+}
+#ment>img:nth-child(2){
+  /* height: 100%; */
+  width: 8%;
+}
+#ment>img:nth-child(3){
+  /* height: 8%; */
+  width: 7%;
+}
+
+  </style>
+</head>
+<body>
+  <div id="MainPageDivOne">
+    <div id="one">
+      <button type="button" aria-label="홈버튼" id="homeBtn"></button> 
+      <div id="area">
+        <p>대전광역시</p>
+      </div>
+      <button type="button" aria-label="게시판버튼" id="boardBtn"></button>
+      <button type="button"  aria-label="마이페이지버튼" id="mypageBtn"></button>
+    </div>
+    <div id="two">
+      <div id="currentWeather">
+        <p>21°</p>
+        <p>맑음</p>
+      </div>
+      <div id="sensoryTemperature">
+        <p>19°</p>
+        <p>체감온도</p>
+      </div>
+    </div>
+  </div>
+  
+  <div id="MainPageDivTwo">
+    <div id="ment">
+      <div id="mentUserName"><p>닉네임</p></div>
+      <img src="image (8).png" alt="마스크">
+      <img src="umbrella.png" alt="우산">
+    </div>
+    <div id="mentWheather"><p>멘트</p></div>
+  </div>
+  
+  <div id="MainPageDivThree">
+    <button type="button" aria-label="새로고침" id="refreshBtn"></button> 
+    <div id="three">
+    </div>
+
+  </div>
+  
+  <div id="MainPageDivFour"></div>
+  <div id="modalBackground"></div>
+  <div id="modal">
+    <div id="modalText">
+      <h3>날짜 강수량 최저 최고</h3>
+      <button id="modalClose">&times;</button>
+    </div>
+    <div id="modalDayOne">
+      <p>월-30%-1도-17도</p>
+    </div>
+  </div>
+  <script>
+    // 모달창
+    const modal = document.querySelector('#modal');
+    const modalBackground = document.querySelector('#modalBackground');
+    const modalClose = document.querySelector('#modalClose');
+    const MainPageDivFour = document.querySelector('#MainPageDivFour');
+
+    MainPageDivFour.addEventListener('click', () => {
+      modal.classList.add('active');
+      modalBackground.classList.add('active');
+    });
+
+    modalClose.addEventListener('click', () => {
+      modal.classList.remove('active');
+      modalBackground.classList.remove('active');
+    });
+
+    modalBackground.addEventListener('click', () => {
+      modal.classList.remove('active');
+      modalBackground.classList.remove('active');
+    });
+    //offset(상단)
+  </script>
+</body>
+</html>
+
+
+
+
+
