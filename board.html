@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+		body {
+			margin: 0;
+			padding: 0;
+			width: 375px;
+			height: 812px;
+      background-color: #AFE1FD;
+		}
+    img{
+      height: 50px;
+      /* margin-left: 10px; */
+      margin: 10px 0 10px 0;
+    }
+    h2 {
+			text-align: center;
+			margin-top: 40px;
+			font-size: 24px;
+			font-weight: normal;
+    }
+    input{
+      width: 375px;
+      height: 50px;
+      font-size: 15px;
+      border: 1px solid #AFE1FD;
+      padding-left: 10px;
+      background-color: white;
+    }
+   
+    textarea{
+      width: 375px;
+      height: 500px;
+      font-size: 15px;
+      border: 1px solid #AFE1FD;
+      padding-left: 10px;
+      background-color: white;
+    }
+	</style>
+</head>
+<body>
+  <a href="#">
+  <img src="./backBtn.png" alt="뒤로가기"></a>
+  <h2>게시글 작성</h2>
+  <form action="/board_write" method="post">
+    <p>
+      <input autocomplete="off" type="text" name="title"
+      placeholder="제목" value="" required>
+    </p>
+    <p>
+      <textarea autocomplete="off" type="text"
+      name="content" placeholder="내용" value=""
+      required>
+      </textarea>
+    </p>
+    <p><input type="submit"></p>
+  </form>
+</body>
+</html>
