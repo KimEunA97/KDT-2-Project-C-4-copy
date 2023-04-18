@@ -11,20 +11,26 @@ let ny = "127";
 // let todayDate = date;
 
 const dt = new Date();
+const st = dt.toLocaleDateString();
 
-let year = dt.getFullYear();
+console.dir(st)
 
-function getMonth(value) {
-  if (dt.getMonth() + 1 < 10) {
+let newStr = st.replace(/. /g, "").slice(0,-1);
+console.log(newStr)
 
-    let act = dt.getMonth() + 1;
-    let td = "0"
-    let month = td + act;
+// let year = dt.getFullYear();
 
-    console.log(month);
-    return month;
-  }
+// function getMonth(value) {
+//   if (dt.getMonth() + 1 < 10) {
 
-}
-getMonth();
-console.log(month)
+//     let act = dt.getMonth() + 1;
+//     let td = "0"
+//     let month = td + act;
+
+//     console.log(month);
+//     return month;
+//   }
+
+// }
+// getMonth();
+// console.log(month)
